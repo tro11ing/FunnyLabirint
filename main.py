@@ -35,10 +35,12 @@ def raycasting(screen, player_pos, player_angle):
 		for depth in range(DEPTH):
 			x = x0 + depth * cos_a
 			y = y0 + depth * sin_a
-			pygame.draw.line(screen,RED,player_pos,(x,y))
 			if (x // CELL_SIZE * CELL_SIZE, y // CELL_SIZE * CELL_SIZE) in walls:
+				depth *= math.cos(player_angle - cur_angle) + 0.1
 				proj_height = PROJ_SCALE / depth
-				pygame.draw.rect(screen,WHITE,(ray*SCALE, SCREEN_H // 2 - proj_height // 2, SCALE, proj_height))
+				c = 255 / (1 + depth * depth * 0.0001)
+				color = (c,c,c)
+				pygame.draw.rect(screen,color,(ray*SCALE, SCREEN_H // 2 - proj_height // 2, SCALE, proj_height))
 				break
 		cur_angle += SPACE_ANGLE
 
@@ -92,12 +94,12 @@ while running:
 	
 	screen.fill(BLACK)
 
-	pygame.draw.circle(screen,GREEN,player.pos,12)
-
 	raycasting(screen,player.pos,player.angle)
 
-	for x,y in walls:
-		pygame.draw.rect(screen,WHITE,(x,y,CELL_SIZE,CELL_SIZE),1)
+	# pygame.draw.circle(screen,GREEN,player.pos,12)
+
+	# for x,y in walls:
+	# 	pygame.draw.rect(screen,WHITE,(x,y,CELL_SIZE,CELL_SIZE),1)
 
 	pygame.display.flip()
 
