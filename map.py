@@ -1,3 +1,4 @@
+import pygame
 from constants import *
 
 str_map=["11111111111111111111",
@@ -22,8 +23,10 @@ str_map=["11111111111111111111",
          "11111111111111111111"]
 
 walls=set()
+rect_walls = []
 
 for line in range(len(str_map)):
 	for col in range(len(str_map[0])):
 		if str_map[line][col] == '1':
 			walls.add((line*CELL_SIZE,col*CELL_SIZE))
+			rect_walls.append(pygame.Rect(line*CELL_SIZE,col*CELL_SIZE,CELL_SIZE,CELL_SIZE))
