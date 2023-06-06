@@ -8,8 +8,8 @@ str_map=["1111111111",
           "1000110001",
           "1000000001",
           "1000000001",
-          "1000011001",
-          "1000011101",
+          "1000000001",
+          "1000000101",
           "1000000101",
           "1011100101",
           "1111111111",]
@@ -26,6 +26,22 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
+def raycasting(screen, player_pos, player_angle):
+	cur_angle = player_angle - FOV / 2
+	x0,y0=player_pos
+	for ray in range(NUM_RAYS):
+		sin_a = math.sin(cur_angle)
+		cos_a = math.cos(cur_angle)
+		for depth in range(DEPTH):
+			x = x0 + depth * cos_a
+			y = y0 + depth * sin_a
+			pygame.draw.line(screen,RED,player_pos,(x,y))
+			if (x // CELL_SIZE * CELL_SIZE, y // CELL_SIZE * CELL_SIZE) in walls:
+				proj_height = PROJ_SCALE / depth
+				pygame.draw.rect(screen,WHITE,(ray*SCALE, SCREEN_H // 2 - proj_height // 2, SCALE, proj_height))
+				break
+		cur_angle += SPACE_ANGLE
+
 class Player:
 	def __init__(self,x,y):
 		self.x = x
@@ -40,17 +56,21 @@ class Player:
 	def move(self):
 		keys = pygame.key.get_pressed()
 		if keys[pygame.K_w]:
-			self.y -= PLAYER_SPEED
+			self.x += PLAYER_SPEED * math.cos(self.angle)
+			self.y += PLAYER_SPEED * math.sin(self.angle)
 		elif keys[pygame.K_s]:
-			self.y += PLAYER_SPEED
+			self.x -= PLAYER_SPEED * math.cos(self.angle)
+			self.y -= PLAYER_SPEED * math.sin(self.angle)
 		elif keys[pygame.K_a]:
-			self.x -= PLAYER_SPEED
+			self.x += PLAYER_SPEED * math.sin(self.angle)
+			self.y -= PLAYER_SPEED * math.cos(self.angle)
 		elif keys[pygame.K_d]:
-			self.x += PLAYER_SPEED
+			self.x -= PLAYER_SPEED * math.sin(self.angle)
+			self.y += PLAYER_SPEED * math.cos(self.angle)
 		elif keys[pygame.K_l]:
-			self.angle -= 0.02
-		elif keys[pygame.K_h]:
 			self.angle += 0.02
+		elif keys[pygame.K_h]:
+			self.angle -= 0.02
 
 screen = pygame.display.set_mode((SCREEN_W,SCREEN_H))
 
@@ -73,7 +93,8 @@ while running:
 	screen.fill(BLACK)
 
 	pygame.draw.circle(screen,GREEN,player.pos,12)
-	pygame.draw.line(screen,RED,player.pos,(player.x + SCREEN_W * math.sin(player.angle),player.y + SCREEN_W * math.cos(player.angle)))
+
+	raycasting(screen,player.pos,player.angle)
 
 	for x,y in walls:
 		pygame.draw.rect(screen,WHITE,(x,y,CELL_SIZE,CELL_SIZE),1)
