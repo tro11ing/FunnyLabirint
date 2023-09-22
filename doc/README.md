@@ -25,7 +25,7 @@
 	- пользователь сталкивается с врагом - приложение выводит сообщение о поражении;
 3. Пользователь нажимает на кнопку закрытия - приложение закрывается
 ### Диаграммы
-- [Activity Diagram 1](https://drive.google.com/file/d/1qu3MqcIL3PMAuxI12BTKI6bK-EYu60tU/view?usp=drive_link)
+- [Activity Diagram 1](./1.png)
 - [Activity Diagram 2](https://drive.google.com/file/d/1lfjaXcPipultS9LAFWerlZcMBZxMAL9h/view?usp=drive_link)
 - [Activity Diagram 3](https://drive.google.com/file/d/1yUwToLrR5k0988dWnrPxy5bux5l-wh44/view?usp=drive_link)
 - [State Machine Diagram](https://drive.google.com/file/d/1vly5rZSY0LQQIFvXf-j7_6BbJ9kJymao/view?usp=drive_link)
