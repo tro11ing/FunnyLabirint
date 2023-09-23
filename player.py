@@ -1,47 +1,14 @@
 import pygame
+from entity import *
 from constants import *
 from map import walls,rect_walls
 from raycast import mapping
 
-class Player:
+class Player(Entity):
 	def __init__(self,x,y):
-		self.x = x
-		self.y = y
+		super().__init__(x,y)
 		self.angle = 0
 
-		self.side = 20
-		self.rect = pygame.Rect(self.x,self.y, self.side, self.side)
-
-	@property
-	def pos(self):
-		return (self.x,self.y)
-
-	# def check_collision(self, dx, dy):
-	# 	next_rect = self.rect.copy()
-	# 	next_rect.move_ip(dx, dy)
-	# 	collisions = next_rect.collidelistall(rect_walls)
-
-	# 	if len(collisions):
-	# 		delta_x, delta_y = 0,0
-	# 		for hit in collisions:
-	# 			hit_rect = rect_walls[hit]
-	# 			if dx > 0:
-	# 				delta_x += next_rect.right - hit_rect.left
-	# 			else:
-	# 				delta_x += hit_rect.right - next_rect.left
-	# 			if dy > 0:
-	# 				delta_y += next_rect.bottom - hit_rect.top
-	# 			else:
-	# 				delta_y += hit_rect.bottom - next_rect.top
-	# 		if abs(delta_x - delta_y) < 10:
-	# 			dx, dy = 0, 0
-	# 		elif delta_x > delta_y:
-	# 			dy = 0
-	# 		elif delta_y > delta_x:
-	# 			dx = 0
-
-	# 	self.x += dx
-	# 	self.y += dy
 
 	def check_collision(self, dx, dy):
 		if dx != 0:
