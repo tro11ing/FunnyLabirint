@@ -29,4 +29,4 @@
 - [Activity Diagram 2](./Activity_diagram2.png)
 - [Activity Diagram 3](./Activity_diagram3.png)
 - [State Machine Diagram](./State_machine_diagram.png)
-- [Sequence Diagram](https://drive.google.com/file/d/1kUU6YqV9y07zpbMSR3H0-e6RnAtYnqL3/view?usp=drive_link)
+- [Sequence Diagram](./Sequence_diagram.png)
