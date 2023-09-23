@@ -33,4 +33,4 @@
 
 ## Структурные модели проекта
 - [Class Diagram](./Class_diagram.png)
-- [Objects Diagram](./Activity_diagram2.png)
+- [Object Diagram](./Object_diagram.png)
