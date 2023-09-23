@@ -30,3 +30,7 @@
 - [Activity Diagram 3](./Activity_diagram3.png)
 - [State Machine Diagram](./State_machine_diagram.png)
 - [Sequence Diagram](./Sequence_diagram.png)
+
+## Структурные модели проекта
+- [Class Diagram](./Class_diagram.png)
+- [Objects Diagram](./Activity_diagram2.png)
