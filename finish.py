@@ -12,5 +12,3 @@ class Finish(Entity):
 		super().__init__(finish_x,finish_y)
 		self.game = game
 
-	def draw(self):
-		pygame.draw.circle(self.game.screen, YELLOW, self.pos, 10)

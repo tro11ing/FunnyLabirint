@@ -37,8 +37,3 @@ class Map:
 				if self.str_map[line][col] == '1':
 					self.set_walls.add((col*CELL_SIZE,line*CELL_SIZE))
 					self.rect_walls.append(pygame.Rect(col*CELL_SIZE,line*CELL_SIZE,CELL_SIZE,CELL_SIZE))
-
-
-	def draw(self):
-		for x,y in self.set_walls:
-			pygame.draw.rect(self.game.screen, WHITE, (x,y,CELL_SIZE,CELL_SIZE))

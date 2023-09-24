@@ -12,9 +12,6 @@ class Enemy(Entity):
 	def __init__(self,game):
 		super().__init__(enemy_x,enemy_y)
 		self.game = game
-	
-	def draw(self):
-		pygame.draw.circle(self.game.screen, RED, self.pos, 10)
 
 	def update(self):
 		self.move()

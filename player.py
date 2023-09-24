@@ -27,6 +27,8 @@ class Player(Entity):
 
 		self.check_collision(dx,dy)
 
+		self.angle %= DOUBLE_PI
+
 		self.rect.center = self.x, self.y
 
 	def check_collision(self,dx,dy):
@@ -50,6 +52,3 @@ class Player(Entity):
 	def update(self):
 		self.move()
 
-	def draw(self):
-		pygame.draw.circle(self.game.screen, GREEN, self.pos, 10)
-		pygame.draw.line(self.game.screen, RED, self.pos, (self.x + 12*math.cos(self.angle), self.y + 12*math.sin(self.angle)))
