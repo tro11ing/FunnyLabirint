@@ -1,12 +1,12 @@
 import math
 import pygame
 from constants import *
-from map import walls
+from map import *
 
 def mapping(x,y):
 	return (x // CELL_SIZE * CELL_SIZE, y // CELL_SIZE * CELL_SIZE)
 
-def raycast(screen, player_pos, player_angle):
+def raycast(screen, player_pos, player_angle, my_map):
 	x0,y0 = player_pos
 	xm,ym = mapping(x0,y0)
 	cur_angle = player_angle - FOV / 2
@@ -24,7 +24,7 @@ def raycast(screen, player_pos, player_angle):
 		for i in range(0,SCREEN_W,CELL_SIZE):
 			depth_v = (x - x0) / cos_a
 			y = y0 + depth_v * sin_a
-			if mapping(x + dx, y) in walls:
+			if mapping(x + dx, y) in my_map.walls:
 				break
 			x += dx*CELL_SIZE
 
@@ -38,7 +38,7 @@ def raycast(screen, player_pos, player_angle):
 		for i in range(0,SCREEN_H,CELL_SIZE):
 			depth_h = (y - y0) / sin_a
 			x = x0 + depth_h * cos_a
-			if mapping(x, y + dy) in walls:
+			if mapping(x, y + dy) in my_map.walls:
 				break
 			y += dy*CELL_SIZE
 

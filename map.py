@@ -1,32 +1,19 @@
 import pygame
 from constants import *
 
-str_map=["11111111111111111111",
-         "10000000000000010001",
-         "10111101111110000001",
-         "10010000000011110101",
-         "10010111001001000101",
-         "10010000001001000101",
-         "10110011000000001101",
-         "10010001111110001001",
-         "10111111000000001101",
-         "10000000011001000001",
-         "11101110000001001001",
-         "10000000000001011001",
-         "10111101101011010001",
-         "10001001001000000011",
-         "10001001001011111111",
-         "10001000000000000001",
-         "10100001111110110001",
-         "10101100101000000001",
-         "10100100001000111001",
-         "11111111111111111111"]
+class Map():
+    def __init__(self,str_map):
+        self.str_map = str_map
+        self.walls=set()
+        self.rect_walls = []
 
-walls=set()
-rect_walls = []
 
-for line in range(len(str_map)):
-	for col in range(len(str_map[0])):
-		if str_map[line][col] == '1':
-			walls.add((line*CELL_SIZE,col*CELL_SIZE))
-			rect_walls.append(pygame.Rect(line*CELL_SIZE,col*CELL_SIZE,CELL_SIZE,CELL_SIZE))
+    def build(self):
+        for line in range(len(self.str_map)):
+            for col in range(len(self.str_map[0])):
+                if self.str_map[line][col] == '1':
+                    self.walls.add((line*CELL_SIZE,col*CELL_SIZE))
+                    self.rect_walls.append(pygame.Rect(line*CELL_SIZE,col*CELL_SIZE,CELL_SIZE,CELL_SIZE))
+
+
+
