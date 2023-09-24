@@ -1,5 +1,6 @@
 import pygame
 from constants import *
+from finish import *
 
 str_map=["11111111111111111111",
          "10000000000000010001",

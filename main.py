@@ -23,3 +23,6 @@ while running:
 
 	game.update()
 	game.draw()
+
+	if game.is_finish():
+		running = False
