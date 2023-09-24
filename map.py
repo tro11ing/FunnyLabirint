@@ -35,8 +35,8 @@ class Map:
 		for line in range(len(self.str_map)):
 			for col in range(len(self.str_map[0])):
 				if self.str_map[line][col] == '1':
-					self.set_walls.add((line*CELL_SIZE,col*CELL_SIZE))
-					self.rect_walls.append(pygame.Rect(line*CELL_SIZE,col*CELL_SIZE,CELL_SIZE,CELL_SIZE))
+					self.set_walls.add((col*CELL_SIZE,line*CELL_SIZE))
+					self.rect_walls.append(pygame.Rect(col*CELL_SIZE,line*CELL_SIZE,CELL_SIZE,CELL_SIZE))
 
 
 	def draw(self):

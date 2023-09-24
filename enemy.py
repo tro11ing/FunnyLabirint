@@ -38,7 +38,15 @@ class Enemy(Entity):
 		self.y += dy
 
 	def move(self):
-		next_x, next_y = mapping(self.game.player.x,self.game.player.y)
+		m_x, m_y = mapping(self.x,self.y)
+		m_x //= CELL_SIZE
+		m_y //= CELL_SIZE
+		pl_x, pl_y = mapping(self.game.player.x,self.game.player.y)
+		pl_x //= CELL_SIZE
+		pl_y //= CELL_SIZE
+		next_x, next_y = self.game.pathfinding.get_path((m_x,m_y),(pl_x,pl_y))
+		next_x *= CELL_SIZE
+		next_y *= CELL_SIZE
 		next_x += CELL_SIZE // 2
 		next_y += CELL_SIZE // 2
 

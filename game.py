@@ -6,6 +6,7 @@ from constants import *
 from player import *
 from finish import *
 from enemy import *
+from pathfinding import *
 
 class Game():
 	def __init__(self):
@@ -19,6 +20,7 @@ class Game():
 		self.map = Map(self)
 		self.player = Player(self)
 		self.enemy = Enemy(self)
+		self.pathfinding = PathFinding(self)
 
 	def update(self):
 		self.player.update()
