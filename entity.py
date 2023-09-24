@@ -12,4 +12,3 @@ class Entity:
 	@property
 	def pos(self):
 		return (self.x,self.y)
-
