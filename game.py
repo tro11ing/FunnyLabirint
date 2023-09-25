@@ -3,16 +3,9 @@ import math
 from map import *
 from constants import *
 from player import *
-from finish import *
 from enemy import *
 from pathfinding import *
 from raycast import *
-
-finish_x = (len(str_map)-1.5)*CELL_SIZE
-finish_y = (len(str_map[0])-1.5)*CELL_SIZE
-
-enemy_x = 1.5*CELL_SIZE
-enemy_y = (len(str_map[0])-1.5)*CELL_SIZE
 
 class Game():
 	def __init__(self):
@@ -24,8 +17,8 @@ class Game():
 	def build(self):
 		self.map = Map(self)
 		self.player = Player(self)
-		self.finish = Entity(self,finish_x,finish_y,"./sprites/flag.png",50,0)
-		self.enemy = Enemy(self,enemy_x,enemy_y,"./sprites/enemy.png",50,0)
+		self.finish = Entity(self,FINISH_X,FINISH_Y,"./sprites/flag.png",50,0)
+		self.enemy = Enemy(self,ENEMY_X,ENEMY_Y,"./sprites/enemy.png",50,0)
 		self.pathfinding = PathFinding(self)
 		self.raycasting = RayCasting(self)
 
@@ -40,13 +33,17 @@ class Game():
 
 	def draw(self):
 		self.screen.fill(BLACK)
-		self.render_game_objects()
+		self.render_objects()
 
 	def is_finish(self):
 		if self.player.rect.colliderect(self.finish.rect):
-			return True	
+			return True
 
-	def render_game_objects(self):
+	def is_enemy(self):
+		if self.player.rect.colliderect(self.enemy.rect):
+			return True
+
+	def render_objects(self):
 		list_objects = sorted(self.raycasting.objects_to_render, key=lambda t: t[0], reverse=True)
 		for depth, image, pos in list_objects:
 			if image == "":

@@ -1,6 +1,5 @@
 import pygame
 import math
-from entity import *
 from constants import *
 from functions import *
 
