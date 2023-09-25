@@ -7,7 +7,7 @@ from map import *
 
 class Enemy(Entity):
 	def __init__(self,game,x,y,path,scale,shift):
-		super().__init__(game,x,y,path,scale,shift)
+		super().__init__(game, x,y,path,scale,shift)
 
 	def update(self):
 		self.move()
