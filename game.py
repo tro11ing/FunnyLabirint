@@ -8,6 +8,12 @@ from enemy import *
 from pathfinding import *
 from raycast import *
 
+finish_x = (len(str_map)-1.5)*CELL_SIZE
+finish_y = (len(str_map[0])-1.5)*CELL_SIZE
+
+enemy_x = 1.5*CELL_SIZE
+enemy_y = (len(str_map[0])-1.5)*CELL_SIZE
+
 class Game():
 	def __init__(self):
 		self.screen = pygame.display.set_mode((SCREEN_W,SCREEN_H))
@@ -18,8 +24,8 @@ class Game():
 	def build(self):
 		self.map = Map(self)
 		self.player = Player(self)
-		self.finish = Finish(self)
-		self.enemy = Enemy(self)
+		self.finish = Entity(self,finish_x,finish_y,"./sprites/flag.png",50,0)
+		self.enemy = Enemy(self,enemy_x,enemy_y,"./sprites/enemy.png",50,0)
 		self.pathfinding = PathFinding(self)
 		self.raycasting = RayCasting(self)
 

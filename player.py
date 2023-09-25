@@ -4,11 +4,18 @@ from entity import *
 from constants import *
 from functions import *
 
-class Player(Entity):
+class Player():
 	def __init__(self,game):
-		super().__init__(PLAYER_X,PLAYER_Y)
+		self.x = PLAYER_X
+		self.y = PLAYER_Y
+		self.side = 20
+		self.rect = pygame.Rect(self.x,self.y, self.side, self.side)
 		self.game = game
 		self.angle = 0
+
+	@property
+	def pos(self):
+		return (self.x,self.y)
 
 	def move(self):
 		dx = 0
