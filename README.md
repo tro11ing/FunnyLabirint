@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=tro11ing_FunnyLabirint&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=tro11ing_FunnyLabirint)
+
 ## Описание проекта
 **Название**: Funny Labirint
 
