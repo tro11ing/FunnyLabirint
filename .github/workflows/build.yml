@@ -16,7 +16,7 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}  # Needed to get PR information, if any
+          ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   coveralls:
     name: coveralls
@@ -39,5 +39,4 @@ jobs:
           python3 -m pytest
           coverage run -m pytest
           python3 -m coverage report -m
-          echo "aboba"
           ${{ secrets.COVERALLS_REPO_TOKEN }} coveralls
