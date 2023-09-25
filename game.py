@@ -28,6 +28,7 @@ class Game():
 		self.enemy.update()
 		self.raycasting.raycast()
 		self.finish.get_sprite()
+		self.enemy.get_sprite()
 		pygame.display.flip()
 		self.clock.tick(FPS)
 

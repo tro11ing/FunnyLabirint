@@ -4,11 +4,8 @@ from entity import *
 from constants import *
 from map import *
 
-#finish_x = (len(str_map)-1.5)*CELL_SIZE
-#finish_y = (len(str_map[0])-1.5)*CELL_SIZE
-
-finish_x = PLAYER_X +CELL_SIZE*2
-finish_y = PLAYER_Y
+finish_x = (len(str_map)-1.5)*CELL_SIZE
+finish_y = (len(str_map[0])-1.5)*CELL_SIZE
 
 class Finish(Entity):
 	def __init__(self,game):
