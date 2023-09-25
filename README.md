@@ -2,6 +2,7 @@
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=tro11ing_FunnyLabirint&metric=bugs)](https://sonarcloud.io/summary/new_code?id=tro11ing_FunnyLabirint)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=tro11ing_FunnyLabirint&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=tro11ing_FunnyLabirint)
 
+
 ## Описание проекта
 **Название**: Funny Labirint
 
