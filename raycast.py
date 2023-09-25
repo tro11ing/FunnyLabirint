@@ -6,8 +6,10 @@ from functions import *
 class RayCasting:
 	def __init__(self,game):
 		self.game = game
+		self.objects_to_render = []
 
 	def raycast(self):
+		self.objects_to_render = []
 		x0,y0 = self.game.player.pos
 		xm,ym = mapping(x0,y0)
 		cur_angle = self.game.player.angle - FOV / 2
@@ -44,14 +46,12 @@ class RayCasting:
 				y += dy*CELL_SIZE
 
 			depth = min(depth_h,depth_v)
-
-
-			depth *= math.cos(self.game.player.angle - cur_angle)
+		
 			depth = max(depth,0.00001)
+			depth *= math.cos(self.game.player.angle - cur_angle)
 			proj_height = min(int(PROJ_SCALE / depth), SCREEN_H)
-			c1 = 201 / (1 + depth * depth * 0.00003)
-			c2 = 133 / (1 + depth * depth * 0.00003)
-			c3 = 104 / (1 + depth * depth * 0.00003)
-			color = (c1,c2,c3)
-			pygame.draw.rect(self.game.screen,color,(ray*SCALE, SCREEN_H // 2 - proj_height // 2, SCALE, proj_height))
+
+			self.objects_to_render.append((depth, "", (ray*SCALE, SCREEN_H // 2 - proj_height // 2, SCALE,proj_height)))
+
+#			pygame.draw.rect(self.game.screen,color,(ray*SCALE, SCREEN_H // 2 - proj_height // 2, SCALE, proj_height))
 			cur_angle += SPACE_ANGLE
