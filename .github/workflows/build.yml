@@ -36,7 +36,7 @@ jobs:
           pip install coveralls
       - name: run tests
         run: |
-          python3 -m pytest tests.py
-          coverage run -m pytest tests.py
+          python3 -m pytest
+          coverage run -m pytest
           python3 -m coverage report -m
           ${{ secrets.COVERALLS_REPO_TOKEN }} coveralls
