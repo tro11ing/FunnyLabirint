@@ -32,7 +32,6 @@ class Game():
 		self.clock.tick(FPS)
 
 	def draw(self):
-		self.screen.fill(BLACK)
 		self.render_objects()
 
 	def is_finish(self):
